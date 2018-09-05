@@ -1,0 +1,109 @@
+#:kivy 1.0.9
+#:import SlideTransition kivy.uix.screenmanager.SlideTransition
+#:import TextInput kivy.uix.textinput.TextInput
+
+<HCC>:
+    cols: 1
+
+<RootScreen>:
+    transition: SlideTransition()
+    StartScreen:
+    LogInScreen:
+    
+<StartScreen>:
+    name: 'Start'
+    
+    GridLayout:
+        cols: 1
+        BoxLayout:
+            size: (1, .7)
+            orientaion: 'vertical'
+            canvas:
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+                    source: 'HCC.jpg'
+                    
+        BoxLayout:
+            size_hint: (1, .3)
+            orientation: 'vertical'
+            
+            Button:
+                size_hint_x: 1
+                pos_hint: {'y':0}
+                text: 'View Schedule'
+                
+            Button:
+                size_hint_x: 1
+                pos_hint: {'y':0}
+                text: 'Register'
+                
+            Button:
+                size_hint_x: 1
+                pos_hint: {'y':0}
+                text: 'Administrator'
+                on_release: 
+                    app.root.transition.direction = 'left'
+                    app.root.current = 'Login' 
+
+<LogInScreen>:
+    name: 'Login'
+              
+    BoxLayout:
+        size: (1, .9)
+        pos_hint: {'x':.35, 'y':.5}
+        orientation: 'vertical'
+        spacing: 5
+        
+        TextInput:
+            text: 'User Name'
+            multiline: False
+            id: user
+            size_hint: (.3, None)
+            height: 30
+                       
+        TextInput:
+            text: 'Password'
+            multiline: False
+            id: pw
+            password: True
+            size_hint: (.3, None)
+            height: 30
+            
+        Button:
+            text: 'Login'
+            size_hint: (.1, None)
+            height: 30
+     
+    BoxLayout:
+        size_hint: (1, .1)  
+        Button:
+            size_hint_x: 1
+            pos_hint: {'y':0}
+            text: 'Home'
+            on_release: 
+                app.root.transition.direction = 'right'
+                app.root.current = 'Start'     
+               
+<GridLayout>:
+
+            
+<SplashScreen>:
+    name: 'splash'
+    canvas.before:
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source: 'HCC.jpg' 
+
+
+
+            
+            
+            
+            
+            
+            
+            
+        
+    
